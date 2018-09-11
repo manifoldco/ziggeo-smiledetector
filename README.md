@@ -1,2 +1,2 @@
 # ziggeo-smiledetector
-A Smile Detector build with Ziggeo and Manifold
+A Smile Detector built with Ziggeo and Manifold
