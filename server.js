@@ -1,34 +1,47 @@
+const fs = require('fs');
+
+const bodyParser = require('body-parser');
+const cv = require('opencv4nodejs');
 const express = require('express');
 const Ziggeo = require('ziggeo');
 const ZiggeoSdk = new Ziggeo(process.env.ZIGGEO_APP_TOKEN, process.env.ZIGGEO_PRIVATE_KEY, process.env.ZIGGEO_ENCRYPTION_KEY);
-const app = require('express')();
-const bodyParser = require('body-parser');
-const port = 3000;
-
-const fs = require('fs');
-
-const cv = require('opencv4nodejs');
 
 const smileClassifier = new cv.CascadeClassifier(cv.HAAR_SMILE);
 const faceClassifier = new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_DEFAULT)
+const port = 3000;
 
+const app = require('express')();
 app.use(bodyParser.json()); // for parsing application/json
 
 // post route for processing videos.
 // expected body: {'videoToken': as7sd79d}.
-// app.post('/process-video', function (req, res) {
-//     token = req.body.videoToken;
-//     data = ZiggeoSdk.Videos.download_video(token);
-//     // saving the data / persisting it
-
-//     // ml magic 
-//     newVideo = detectAndAnnotateSmile(data);
-    
-//     // fill in arguments with new video
-//     ZiggeoSdk.Videos.create(arguments, [callbacks]);
-//     res.send('OK');
-// })
-
+// result json: {'videoToken': as7sd79d}.
+app.post('/process-video', function (req, res) {
+    token = req.body.videoToken;
+    annotatedVideo = '';
+    ZiggeoSdk.Videos.download_video(token, {
+        success: function(result) {
+            fs.writeFile(token + '.mp4', result, {}, (err, result) => {
+                if(err){
+                    console.error(err)
+                    return
+                }
+                console.log('video saved')
+                annotatedVideo = annotateSmile(token + '.mp4');
+                ZiggeoSdk.Videos.create({
+                    file: annotatedVideo,
+                }, {
+                    success: function(result) {
+                        console.log(result.token)
+                        s.unlinkSync(token + '.mp4')
+                        s.unlinkSync(annotatedVideo)
+                        res.json({videoToken: result.token})
+                    }
+                });
+            })
+        }    
+    });  
+});
 
 // annotate a new video with smiles if they exist.
 // if exist return filePath else return empty string.
@@ -94,30 +107,4 @@ const inFace = (smile, face) => {
     return false
 }
 
-videoToken = 'de2839177944158707d89fe4af808207';
-annotatedVideo = '';
-ZiggeoSdk.Videos.download_video(videoToken, {
-    success: function(result) {
-        fs.writeFile(videoToken + '.mp4', result, {}, (err, res) => {
-            if(err){
-                console.error(err)
-                return
-            }
-            console.log('video saved')
-            annotatedVideo = annotateSmile(videoToken + '.mp4');
-            ZiggeoSdk.Videos.create({
-                file: annotatedVideo,
-            }, {
-                success: function(result) {
-                    console.log(result.token)
-                }
-            });
-        })
-
-        
-    }
-});
-//app.listen(port);
-
-
-
+app.listen(port);
