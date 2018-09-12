@@ -55,6 +55,7 @@ app.post('/process-video', function (req, res) {
 const annotateSmile = filePath => {
     // open file path as video capture stream and annotated path as video writer stream.
     newFilePath = 'annotated_' + filePath;
+    console.log(filePath);
     vCap = new cv.VideoCapture(filePath);
     vWriter = new cv.VideoWriter(newFilePath, cv.VideoWriter.fourcc('MJPG'), 24, new cv.Size(640, 480));
 
