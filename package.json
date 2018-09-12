@@ -1,0 +1,26 @@
+{
+  "name": "ziggeo-smiledetector",
+  "version": "1.0.0",
+  "description": "A Smile Detector built with Ziggeo and Manifold",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "opencv4nodejs": "^4.7.4",
+    "ziggeo": "^0.1.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manifoldco/ziggeo-smiledetector.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manifoldco/ziggeo-smiledetector/issues"
+  },
+  "homepage": "https://github.com/manifoldco/ziggeo-smiledetector#readme"
+}

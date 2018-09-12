@@ -8,7 +8,8 @@ const ZiggeoSdk = new Ziggeo(process.env.ZIGGEO_APP_TOKEN, process.env.ZIGGEO_PR
 
 const smileClassifier = new cv.CascadeClassifier(cv.HAAR_SMILE);
 const faceClassifier = new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_DEFAULT);
-const port = 3000;
+const port = process.env.PORT || 3000;
+const smileThreshold = 3.6;
 
 const app = require('express')();
 app.use(bodyParser.json()); // for parsing application/json
@@ -38,13 +39,13 @@ app.post('/process-video', function (req, res) {
                     failure: function(err) {
                         fs.unlinkSync(token + '.mp4');
                         fs.unlinkSync(annotatedVideo);
-                        res.json(500, err);
+                        res.status(500).json(err);
                     }
                 });
             })
         },
         failure: function(err) {
-            res.json(500, err);
+            res.status(500).json(err);
         }
     });  
 });
@@ -74,7 +75,7 @@ const annotateSmile = filePath => {
         faces.objects.forEach(face => {
             frame.drawRectangle(new cv.Rect(face.x, face.y, face.width, face.height), new cv.Vec3(0,255,0));
             smiles.objects.forEach((smile, i) => {
-                if(smiles.levelWeights[i] > 3.6 && inFace(smile, face)) {
+                if(smiles.levelWeights[i] > smileThreshold && inFace(smile, face)) {
                     frame.drawRectangle(new cv.Rect(smile.x, smile.y, smile.width, smile.height), new cv.Vec3(255,0,0));
                     hasSmile = true;
                 }
