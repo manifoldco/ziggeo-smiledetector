@@ -7,7 +7,7 @@ const Ziggeo = require('ziggeo');
 const ZiggeoSdk = new Ziggeo(process.env.ZIGGEO_APP_TOKEN, process.env.ZIGGEO_PRIVATE_KEY, process.env.ZIGGEO_ENCRYPTION_KEY);
 
 const smileClassifier = new cv.CascadeClassifier(cv.HAAR_SMILE);
-const faceClassifier = new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_DEFAULT)
+const faceClassifier = new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_DEFAULT);
 const port = 3000;
 
 const app = require('express')();
@@ -23,23 +23,29 @@ app.post('/process-video', function (req, res) {
         success: function(result) {
             fs.writeFile(token + '.mp4', result, {}, (err, result) => {
                 if(err){
-                    console.error(err)
-                    return
+                    res.json(500, 'failed to write video');
+                    return;
                 }
-                console.log('video saved')
                 annotatedVideo = annotateSmile(token + '.mp4');
                 ZiggeoSdk.Videos.create({
                     file: annotatedVideo,
                 }, {
                     success: function(result) {
-                        console.log(result.token)
-                        s.unlinkSync(token + '.mp4')
-                        s.unlinkSync(annotatedVideo)
-                        res.json({videoToken: result.token})
+                        fs.unlinkSync(token + '.mp4');
+                        fs.unlinkSync(annotatedVideo);
+                        res.json({videoToken: result.token});
+                    },
+                    failure: function(err) {
+                        fs.unlinkSync(token + '.mp4');
+                        fs.unlinkSync(annotatedVideo);
+                        res.json(500, err);
                     }
                 });
             })
-        }    
+        },
+        failure: function(err) {
+            res.json(500, err);
+        }
     });  
 });
 
@@ -90,21 +96,21 @@ const annotateSmile = filePath => {
 
 // check if the coordinates of the smile is within the coordinaes of the face.
 const inFace = (smile, face) => {
-    smileX1 = smile.x
-    smileY1 = smile.y
-    smileX2 = smile.x + smile.width
-    smileY2 = smile.y + smile.height
+    smileX1 = smile.x;
+    smileY1 = smile.y;
+    smileX2 = smile.x + smile.width;
+    smileY2 = smile.y + smile.height;
    
-    faceX1 = face.x
-    faceY1 = face.y
-    faceX2 = face.x + face.width
-    faceY2 = face.y + face.height
+    faceX1 = face.x;
+    faceY1 = face.y;
+    faceX2 = face.x + face.width;
+    faceY2 = face.y + face.height;
 
     if ((smileX1 > faceX1 && smileX1 < faceX2) && (smileX2 > faceX1 && smileX2 < faceX2)
         &&  (smileY1 > faceY1 && smileY1 < faceY2) && (smileY2 > faceY1 && smileY2 < faceY2)) {
-        return true
+        return true;
     }
-    return false
+    return false;
 }
 
 app.listen(port);
