@@ -2,8 +2,10 @@ ZiggeoApi.token = "d3dbfe43917210b2299fe55163942550";
 
 var init = () => {
   var element = document.getElementById('ziggeo-recorder');
-  var embedding = ZiggeoApi.V2.Recorder.findByElement(element);
+  ZiggeoApi.V2.Recorder.findByElementPromise(element).success(mount);
+}
 
+var mount = (embedding) => {
   embedding.on("processed", (data) => {
     let elementToDisplay = document.getElementById('elementToDisplay');
     let msg = "Calculating!"
