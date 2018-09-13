@@ -28,13 +28,18 @@ app.post('/process-video', function (req, res) {
                     return;
                 }
                 annotatedVideo = annotateSmile(token + '.mp4');
+                if (!annotatedVideo){
+                    res.json({videoToken: token, smile: false});
+                    return;
+                }
                 ZiggeoSdk.Videos.create({
                     file: annotatedVideo,
+                    tags: ['smile']
                 }, {
                     success: function(result) {
                         fs.unlinkSync(token + '.mp4');
                         fs.unlinkSync(annotatedVideo);
-                        res.json({videoToken: result.token});
+                        res.json({videoToken: result.token, smile: true});
                     },
                     failure: function(err) {
                         fs.unlinkSync(token + '.mp4');

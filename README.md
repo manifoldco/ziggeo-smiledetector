@@ -7,7 +7,7 @@ npm i # install dependencies
 manifold run -t manifold -p ziggeo-cv-demo -- npm start # begin the server
 curl --header "Content-Type: application/json"  \
      --request POST \
-     --data '{"videoToken":"de2839177944158707d89fe4af808207"}' \ http://localhost:3000/process-video # test the server
+     --data '{"videoToken":"de2839177944158707d89fe4af808207"}' http://localhost:3000/process-video # test the server
 ```
 
 ## Docker
