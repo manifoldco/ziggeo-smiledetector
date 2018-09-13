@@ -12,7 +12,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "docker build . -t smile-server",
+    "build": "docker build . -t drosati/ziggeo-smiledetector",
     "docker-start": "bash ./run-server.sh"
   },
   "repository": {

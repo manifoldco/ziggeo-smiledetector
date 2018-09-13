@@ -29,6 +29,7 @@ app.post('/process-video', function (req, res) {
                 }
                 annotatedVideo = annotateSmile(token + '.mp4');
                 if (!annotatedVideo){
+                    fs.unlinkSync(token + '.mp4');
                     res.json({videoToken: token, smile: false});
                     return;
                 }
@@ -120,4 +121,5 @@ const inFace = (smile, face) => {
     return false;
 }
 
+app.use(express.static('public'))
 app.listen(port);
