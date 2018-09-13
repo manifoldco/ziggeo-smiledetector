@@ -11,7 +11,9 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "docker build . -t smile-server",
+    "docker-start": "bash ./run-server.sh"
   },
   "repository": {
     "type": "git",
