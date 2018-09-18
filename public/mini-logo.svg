@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="101px" viewBox="0 0 35 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>10FF27C7-7D16-4141-ACDD-98D79AFB08B4</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <ellipse id="path-1" cx="17.5" cy="18.2647059" rx="17.3987603" ry="17.6326932"></ellipse>
+        <linearGradient x1="1.2017549%" y1="95.9924316%" x2="92.8412139%" y2="42.2131348%" id="linearGradient-3">
+            <stop stop-color="#FF0264" offset="0%"></stop>
+            <stop stop-color="#FE624E" offset="40.83%"></stop>
+            <stop stop-color="#FDBC39" offset="81.65%"></stop>
+            <stop stop-color="#FDDF31" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0.0421734796%" y1="49.9852803%" x2="100.018843%" y2="49.9852803%" id="linearGradient-4">
+            <stop stop-color="#140A3B" offset="0%"></stop>
+            <stop stop-color="#064E91" offset="68.04%"></stop>
+            <stop stop-color="#006AB4" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0.464918256%" y1="50.004856%" x2="173.38188%" y2="50.004856%" id="linearGradient-5">
+            <stop stop-color="#349FD3" offset="0%"></stop>
+            <stop stop-color="#218ABE" offset="35.17%"></stop>
+            <stop stop-color="#00679B" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-0.0291469194%" y1="49.9818841%" x2="99.8646919%" y2="49.9818841%" id="linearGradient-6">
+            <stop stop-color="#A34CB4" offset="0%"></stop>
+            <stop stop-color="#954DB2" offset="9.192359%"></stop>
+            <stop stop-color="#3C52A1" offset="71.69%"></stop>
+            <stop stop-color="#19549B" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Start" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mobile" transform="translate(-142.000000, -689.000000)">
+            <g id="pricing" transform="translate(20.000000, 669.000000)">
+                <g id="manifold" transform="translate(1.000000, 0.000000)">
+                    <g id="dev-card" transform="translate(-1.000000, 20.000000)">
+                        <g id="logo/logo-color" transform="translate(122.000000, 0.000000)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="Mask" fill-rule="nonzero" transform="translate(17.500000, 18.264706) scale(-1, 1) translate(-17.500000, -18.264706) "></g>
+                            <polygon id="orange" fill="url(#linearGradient-3)" fill-rule="evenodd" mask="url(#mask-2)" points="35 21.7058824 0 21.7058824 0 0.529411765 35 0.529411765"></polygon>
+                            <path d="M35.0000003,30.8044932 C27.7049835,39.891323 17.2830579,32.1597958 17.2830579,32.1597958 L5.84297521,21.8410792 L8.56198347,19.42263 C9.89256198,18.2207341 9.76239669,9.82211959 13.7396694,8.25379193 C15.4607438,7.57955761 17.2830579,8.42967914 17.6301653,8.54693729 C18.0446921,8.68697071 28.9195461,12.9283578 35,15.3100306 L35,30.8044921 L35.0000003,30.8044932 Z" id="dark-blue" fill="url(#linearGradient-4)" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                            <path d="M35,15.4088116 L35,36 L14.5482467,36 C14.1155015,34.1998202 13.6673554,31.6522028 13.6673554,29.9758629 C13.6673554,25.0217064 16.2272727,21.7238211 18.8884298,23.1602333 C19.6115702,23.5559796 20.2479339,24.3767866 20.9566116,25.4907389 C22.0413223,27.2202965 23.1694215,28.0557608 24.2252066,28.0850754 C24.5867769,28.0997326 24.9628099,28.011789 25.2954545,27.8359018 C26.0619835,27.4254983 26.7561983,26.5460622 27.3057851,25.1975936 C27.7107438,24.2448712 28.0289256,23.0429752 28.2603306,21.6358775 L28.3760331,20.8883568 C28.7086777,18.8070248 29.2582645,17.2093826 29.9380165,16.1100875 C29.9380165,16.1100875 29.9669421,16.0661157 30.0103306,16.0074866 C30.3285124,15.5384541 31.6446281,13.9408119 34.6528926,15.2453087 C34.765901,15.2988281 34.8818699,15.353358 35,15.4088116 Z" id="blue" fill="url(#linearGradient-5)" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                            <path d="M0,15.3334899 L18.411157,22.9110598 C15.9958678,22.1049101 14,26.0184006 14,30.3129801 C14,32.0425377 14.3904959,33.9919543 14.8533058,35.6921974 C14.8533058,35.7224741 14.8742085,35.825075 14.9160139,36 L0,36 L0,15.3334899 Z" id="purple-blue" fill="url(#linearGradient-6)" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
